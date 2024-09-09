@@ -1,13 +1,15 @@
+/* General Resets */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 body {
 	background-color: #282847;
 	color: #282847;
+	transition: background-color 0.5s ease;
 }
 
 main {
@@ -18,19 +20,38 @@ main {
 	padding: 2rem;
 }
 
+/* Generator Container */
 .generator {
 	width: 100%;
 	max-width: 640px;
-	padding: 2rem 1rem;
+	padding: 2rem 1.5rem;
 	background-color: #fff;
 	border-radius: 1rem;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.generator:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings */
 h1 {
-	font-size: 1.5rem;
-	margin-bottom: 1rem;
+	font-size: 2rem;
+	color: #282847;
+	margin-bottom: 1.5rem;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: color 0.3s ease;
 }
 
+.generator:hover h1 {
+	color: #ad25fc;
+}
+
+/* Input Fields */
 input:not([type="checkbox"]),
 button {
 	appearance: none;
@@ -39,15 +60,19 @@ button {
 	background: none;
 }
 
+/* Checkbox */
 input[type="checkbox"] {
 	cursor: pointer;
+	transform: scale(1.2);
+	margin-left: 0.5rem;
 }
 
+/* Password Field */
 .password-wrap {
 	position: relative;
 	display: flex;
 	width: 100%;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 }
 
 .password-wrap:after {
@@ -64,24 +89,46 @@ input[type="checkbox"] {
 
 .password-wrap input {
 	flex: 1 1 0%;
-	padding: 0.5rem;
+	padding: 0.75rem;
 	color: #282847;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+	transition: border-color 0.3s ease;
+}
+
+.password-wrap input:focus {
+	border-color: #ad25fc;
 }
 
 .password-wrap input::placeholder {
 	color: #888;
 	font-style: italic;
+	transition: color 0.3s ease;
 }
 
+.password-wrap input:hover::placeholder {
+	color: #555;
+}
+
+/* Copy Button */
 .password-wrap button {
 	cursor: pointer;
 	background: linear-gradient(to bottom, #ad25fc 0%, #518cd4 75%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	font-size: 1.5rem;
+	transition: background 0.3s ease;
 }
 
+.password-wrap button:hover {
+	background: linear-gradient(to bottom, #518cd4 0%, #ad25fc 75%);
+}
+
+/* Labels and Controls */
 label {
 	display: flex;
+	align-items: center;
 	user-select: none;
 	margin-bottom: 1rem;
 }
@@ -90,25 +137,60 @@ label span {
 	display: block;
 	flex: 1 1 0%;
 	white-space: nowrap;
+	color: #282847;
+	font-size: 1rem;
 }
 
 label input[type="number"] {
 	text-align: right;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	border: 1px solid #ccc;
+	color: #282847;
+	transition: border-color 0.3s ease;
 }
 
+label input[type="number"]:focus {
+	border-color: #ad25fc;
+}
+
+/* Submit Button */
 button[type="submit"] {
 	cursor: pointer;
-	padding: 0.5rem 1rem;
+	padding: 0.75rem 1.5rem;
 	color: #FFF;
 	font-weight: bold;
 	text-transform: uppercase;
-	border-radius: 0.25rem;
+	border-radius: 0.5rem;
+	font-size: 1rem;
 	background: linear-gradient(to right, #ad25fc 25%, #518cd4 50%);
 	background-size: 200%;
 	background-position: 25%;
-	transition: 0.3s ease-out;
+	transition: background-position 0.3s ease-out, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button[type="submit"]:hover {
 	background-position: 75%;
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Enhancements */
+@media (max-width: 480px) {
+	.generator {
+		padding: 1.5rem;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	label span {
+		font-size: 0.875rem;
+	}
+
+	button[type="submit"] {
+		font-size: 0.875rem;
+		padding: 0.5rem 1rem;
+	}
 }
